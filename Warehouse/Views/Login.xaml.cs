@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Warehouse.Models;
 
 namespace Warehouse
 {
@@ -29,7 +30,36 @@ namespace Warehouse
             Registration registration = new Registration();
             Close();
             registration.ShowDialog();
-            
+            //this.Hide();
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                using(var ctx = new DatabaseEntities())
+                {
+                    Users tryUserIdentify = new Users()
+                    {
+                        Email = LoginEmailTextBox.Text.ToString().Trim(),
+                        Password = Security.Encrypt(LoginPasswordBox.Password.ToString().Trim())
+                    };
+                    Users user = ctx.Users
+                        .Where(x => x.Password == tryUserIdentify.Password && x.Email == tryUserIdentify.Email).FirstOrDefault();
+                    
+                    if(user != null)
+                    {
+                        MessageBox.Show($"Пользователь вошел.", "Успешно добавлен", MessageBoxButton.OK, MessageBoxImage.Information);
+                        MainWindow mainWindow = new MainWindow();
+                        Close();
+                        mainWindow.ShowDialog();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Информация об ошибке: {ex.Message}", "Произошла ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
     }
 }

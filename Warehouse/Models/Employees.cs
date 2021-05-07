@@ -12,7 +12,7 @@ namespace Warehouse.Models
         {
             this.StaffItems = new HashSet<StaffItems>();
         }
-        public int ID_Employee { get; set; }
+        public int Id { get; set; }
         public string Name { get; set; }
         public string Phone { get; set; }
         public string Email { get; set; }

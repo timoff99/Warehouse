@@ -8,7 +8,7 @@ namespace Warehouse.Models
 {
     public class StaffItems
     {
-        public int ID_item { get; set; }
+        public int Id { get; set; }
         public string ItemName { get; set; }
         public Nullable<int> Ammount { get; set; }
         public Nullable<int> Price { get; set; }
