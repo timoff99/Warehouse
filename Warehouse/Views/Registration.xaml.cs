@@ -30,7 +30,6 @@ namespace Warehouse
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             Login login = new Login();
-            //this.Visibility = Visibility.Hidden;
             Close();
             login.Show();
         }

@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using Warehouse.Models;
+using Warehouse.Views;
 
 namespace Warehouse
 {
@@ -30,7 +31,6 @@ namespace Warehouse
             Registration registration = new Registration();
             Close();
             registration.ShowDialog();
-            //this.Hide();
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
@@ -50,9 +50,9 @@ namespace Warehouse
                     if(user != null)
                     {
                         MessageBox.Show($"Пользователь вошел.", "Успешно добавлен", MessageBoxButton.OK, MessageBoxImage.Information);
-                        MainWindow mainWindow = new MainWindow();
+                        AdminWindow adminWindow = new AdminWindow(user);// поменять на user или admin Window
                         Close();
-                        mainWindow.ShowDialog();
+                        adminWindow.ShowDialog();
                     }
                 }
             }
