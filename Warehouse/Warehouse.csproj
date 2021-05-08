@@ -96,8 +96,12 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Validation.cs" />
     <Compile Include="Views\AdminAllStaffRedactorPage.xaml.cs">
       <DependentUpon>AdminAllStaffRedactorPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AdminEmployeesRedactorPage.xaml.cs">
+      <DependentUpon>AdminEmployeesRedactorPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\AdminWelcomePage.xaml.cs">
       <DependentUpon>AdminWelcomePage.xaml</DependentUpon>
@@ -122,6 +126,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\AdminAllStaffRedactorPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\AdminEmployeesRedactorPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

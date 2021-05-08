@@ -15,8 +15,8 @@ namespace Warehouse.Models
         public Nullable<int> PeriodOfStorage { get; set; }
         public string ArrivalData { get; set; }
         public string OffData { get; set; }
-        public Nullable<int> FK_ResponsibleEmployee { get; set; }
-        public Nullable<int> FK_Category { get; set; }
+        public string FK_ResponsibleEmployee { get; set; }
+        public string FK_Category { get; set; }
 
         public virtual Categories Categories { get; set; }
         public virtual Employees Employees { get; set; }

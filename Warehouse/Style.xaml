@@ -55,7 +55,6 @@
         <Setter Property="VerticalContentAlignment" Value="Stretch"/>
         <Setter Property="HorizontalAlignment" Value="Stretch"/>
         <Setter Property="Background" Value="#6f7e95"/>
-        <Setter Property="FontFamily" Value="Fonts/#Open Sans Semibold"></Setter>
         <Setter Property="Padding" Value="7,5,7,5"/>
         <Setter Property="Foreground" Value="#ffffff"/>
         <Setter Property="FontSize" Value="14"/>

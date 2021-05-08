@@ -22,6 +22,7 @@ namespace Warehouse.Views
     {
         AdminWelcomePage AdminWelcomePage;
         AdminAllStaffRedactorPage AdminAllStaffRedactorPage = new AdminAllStaffRedactorPage();
+        AdminEmployeesRedactorPage AdminEmployeesRedactorPage = new AdminEmployeesRedactorPage();
         public AdminWindow()
         {
             InitializeComponent();
@@ -45,6 +46,11 @@ namespace Warehouse.Views
         {
 
             Framef.Content = AdminAllStaffRedactorPage;
+        }
+
+        private void OpenAdminEmployeesRedactorPage_Click(object sender, RoutedEventArgs e)
+        {
+            Framef.Content = AdminEmployeesRedactorPage;
         }
     }
 }
