@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using Warehouse.Models;
 
-namespace Warehouse.Views
+namespace Warehouse.Views.Admin
 {
     /// <summary>
     /// Логика взаимодействия для AdminWindow.xaml

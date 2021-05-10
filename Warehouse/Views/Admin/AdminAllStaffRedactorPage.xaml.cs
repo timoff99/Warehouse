@@ -18,7 +18,7 @@ using System.Windows.Shapes;
 using Warehouse.Models;
 using Warehouse.Views.Add;
 
-namespace Warehouse.Views
+namespace Warehouse.Views.Admin
 {
     /// <summary>
     /// Логика взаимодействия для AdminAllStaffRedactorPage.xaml
@@ -220,57 +220,6 @@ namespace Warehouse.Views
                             FillDataGrid();
                         }
                     }
-
-                    ////Логика обновления СОТРУДНИКА
-                    //if (WhatSave == "Employees")
-                    //{
-                    //    if (EmployeesDataGrid.SelectedCells.Count == 4)
-                    //    {
-                    //        DataRowView rowView = EmployeesDataGrid.SelectedItem as DataRowView;
-                    //        //id выделенной строки
-                    //        int selectedItem_ID = Convert.ToInt32(rowView.Row[0]);
-
-                    //        Employees updatedEmployee = new Employees();
-
-                    //        //поиск обновляемого элемента в контексте по ID (Primary key)
-                    //        updatedEmployee = db.Employees.Where(x => x.ID_Employee == selectedItem_ID).FirstOrDefault();
-                    //        updatedEmployee.Name = textBoxEmployeeName.Text.ToString();
-                    //        updatedEmployee.Phone = textBoxEmployeePhone.Text.ToString();
-                    //        updatedEmployee.Email = textBoxEmployeeEmail.Text.ToString();
-
-                    //        db.Entry(updatedEmployee).State = EntityState.Modified;
-                    //        db.SaveChanges();
-
-                    //        FillDataGrid("EmployeesTable");
-
-                    //    }
-                    //}
-
-                    ////Логика обновления КАТЕГОРИИ 
-                    //if (WhatSave == "Categories")
-                    //{
-                    //    if (CategoryesDataGrid.SelectedCells.Count == 3)
-                    //    {
-                    //        DataRowView rowView = CategoryesDataGrid.SelectedItem as DataRowView;
-                    //        //id выделенной строки
-                    //        int selectedItem_ID = Convert.ToInt32(rowView.Row[0]);
-
-                    //        Categories category = new Categories();
-
-                    //        //поиск обновляемого элемента в контексте по ID (Primary key)
-                    //        category = db.Categories.Where(x => x.ID == selectedItem_ID).FirstOrDefault();
-                    //        category.Name = textBoxCategoryName.Text.ToString();
-                    //        category.Description = textBoxCategoryDescription.Text.ToString();
-
-
-                    //        db.Entry(category).State = EntityState.Modified;
-                    //        db.SaveChanges();
-
-                    //        FillDataGrid("CategoriesTable");
-
-                    //    }
-                    //}
-
                 }
             }
             catch (Exception exteption)

@@ -28,7 +28,8 @@
                 <PasswordBox x:Name="LoginPasswordBox" materialDesign:HintAssist.Hint="Введите пароль" Width="444" Style="{StaticResource MaterialDesignFloatingHintPasswordBox}"/>
                   
                 
-                <Button Content="Войти" Margin="0 20" Click="Button_Click_1"/>
+                <Button Content="Войти" Margin="0 20" Click="ButtonEntry_Click"/>
+                <Button Content="Восстановить пароль" Click="ButtonRestorePassword_Click"/>
             </StackPanel>
         </Border>
     </Grid>

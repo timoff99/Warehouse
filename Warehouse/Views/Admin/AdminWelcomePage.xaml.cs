@@ -14,7 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Warehouse.Models;
 
-namespace Warehouse.Views
+namespace Warehouse.Views.Admin
 {
     /// <summary>
     /// Логика взаимодействия для AdminWelcomePage.xaml
@@ -33,9 +33,7 @@ namespace Warehouse.Views
             
             using( DatabaseEntities ctx = new DatabaseEntities())
             {
-                
-                string name1 = user.Name;
-                userName.Text = name1;
+                userName.Text = user.Name;
             }
         }
     }

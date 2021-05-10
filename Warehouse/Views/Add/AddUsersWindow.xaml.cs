@@ -36,12 +36,13 @@ namespace Warehouse.Views.Add
                 //«Ответственное лицо»
                 if (cb == IsAdminComboBox)
                 {
-                    var allEmployees = db.Users;
+                    bool Ttrue = true;
+                    bool Ffalse = false;
                     BindingList<string> isAdmin = new BindingList<string>();
-                    foreach (var item in allEmployees)
-                    {
-                        isAdmin.Add(item.IsAdmin.ToString());
-                    }
+
+                        isAdmin.Add(Ffalse.ToString());
+                        isAdmin.Add(Ttrue.ToString());
+                    
                     cb.ItemsSource = isAdmin;
                 }
             }

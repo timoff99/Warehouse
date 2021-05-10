@@ -17,7 +17,7 @@ using System.Windows.Shapes;
 using Warehouse.Models;
 using Warehouse.Views.Add;
 
-namespace Warehouse.Views
+namespace Warehouse.Views.Admin
 {
     /// <summary>
     /// Логика взаимодействия для AdminUsersRedactorPage.xaml
@@ -52,18 +52,20 @@ namespace Warehouse.Views
         {
             using (db = new DatabaseEntities()) // в фильтре многовато условий подчистить 
             {
-                var filter = db.Users.Where(x => x.Name.Contains(NameRegisterTextBox.Text) ||
-                                                x.Email.ToString().Contains(EmailRegisterTextBox.Text) ||
-                                                x.Password.ToString().Contains(PasRegisterTextBox.Text) ||
-                                                x.IsAdmin.ToString().Contains(IsAdminComboBox.Text)
+                var filter = db.Users.Where(x => x.Name.Contains(textBoxItemsSearch.Text) ||
+                                                x.Email.ToString().Contains(textBoxItemsSearch.Text) ||
+                                                x.Password.ToString().Contains(textBoxItemsSearch.Text) ||
+                                                x.IsAdmin.ToString().Contains(textBoxItemsSearch.Text)
                                                 );
                 BindingList<Users> user = new BindingList<Users>();
                 foreach (Users item in filter)
                 {
                     user.Add(item);
-
                 }
-                UsersDataGrid.ItemsSource = user;
+                if(user != null)
+                    UsersDataGrid.ItemsSource = user;
+                else
+                    FillDataGrid();
             }
         }
         private void ButtonResetSearchItems_Click(object sender, RoutedEventArgs e)
@@ -75,14 +77,31 @@ namespace Warehouse.Views
         {
             using (db = new DatabaseEntities())
             {
-                //«Ответственное лицо»
+                //Admin?
                 if (cb == IsAdminComboBox)
                 {
+                    bool Tflag = true;
+                    bool Fflag = true;
                     var allEmployees = db.Users;
                     BindingList<string> isAdmin = new BindingList<string>();
                     foreach (var item in allEmployees)
                     {
-                        isAdmin.Add(item.IsAdmin.ToString());
+                        if (item.IsAdmin == true && Tflag) 
+                        {
+                            Tflag = false;
+                            if(isAdmin.Count < 2)
+                            { 
+                            isAdmin.Add(item.IsAdmin.ToString());
+                            }
+                        }
+                        if (item.IsAdmin == false && Fflag)
+                        {
+                            Fflag = false;
+                            if (isAdmin.Count < 2)
+                            {
+                                isAdmin.Add(item.IsAdmin.ToString());
+                            }
+                        }
                     }
                     cb.ItemsSource = isAdmin;
                 }
