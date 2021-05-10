@@ -2,7 +2,8 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:local="clr-namespace:Warehouse"
                     xmlns:Themes="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero2">
-    
+
+    <!--TextBox-->
     <Style x:Key="RightTextBox" TargetType="{x:Type TextBox}">
         <Setter Property="FontFamily" Value="Segoe UI"/>
         <Setter Property="FontSize" Value="14"/>
@@ -38,7 +39,7 @@
         </Setter>
     </Style>
 
-
+    <!--DataGrid-->
     <Style x:Key="ColumnHeaderGripperStyle" TargetType="{x:Type Thumb}">
         <Setter Property="Width" Value="1"/>
         <Setter Property="Cursor" Value="SizeWE"/>
@@ -114,5 +115,17 @@
             </Trigger>
         </Style.Triggers>
     </Style>
+    
+    <!--ComboBox-->
 
+
+    <Style x:Key="{x:Type ComboBox}" TargetType="{x:Type ComboBox}" BasedOn="{StaticResource MaterialDesignComboBox}">
+        <Setter Property="FontFamily" Value="Segoe UI"/>
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="Foreground" Value="#3b3f48"/>
+        <Setter Property="HorizontalContentAlignment" Value="Left"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="Padding" Value="3,0,3,0"/>
+        <Setter Property="UseLayoutRounding" Value="True"/>
+    </Style>
 </ResourceDictionary>

@@ -9,9 +9,11 @@ using System.Windows.Media;
 
 namespace Warehouse
 {
-    class Validation
+    public class Validation
     {
-        static readonly SolidColorBrush colorError = new SolidColorBrush(Color.FromRgb(255, 197, 197));
+        static readonly SolidColorBrush colorError = new SolidColorBrush(System.Windows.Media.Color.FromRgb(255, 80, 80));
+        static readonly SolidColorBrush colorCorrect = new SolidColorBrush(System.Windows.Media.Color.FromRgb(60, 179, 113));
+
         public static bool TextChanged(TextBox tb)
         {
 
@@ -91,7 +93,7 @@ namespace Warehouse
             }
 
             //СОТРУДНИКИ
-            if (tb.Name == "textBoxEmployeeName")
+            if (tb.Name == "textBoxEmployeeName" )
             {
                 if (!Regex.IsMatch(tb.Text, @"^[A-ЯЁ][а-яё]+\s[A-ЯЁ][а-яё]+$"))
                 {
@@ -113,7 +115,7 @@ namespace Warehouse
                 tb.Background = Brushes.White;
             }
 
-            if (tb.Name == "textBoxEmployeeEmail" & tb.Text.Length >= 1)
+            if (tb.Name == "textBoxEmployeeEmail" & tb.Text.Length >= 1 )
             {
                 if (!Regex.IsMatch(tb.Text, @"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$"))
                 {
@@ -128,18 +130,6 @@ namespace Warehouse
             if (tb.Name == "textBoxEmployeePhone" || tb.Name == "textBoxEmployeeEmail" && tb.Text == "")
             {
                 tb.Background = Brushes.White;
-            }
-
-            //ФОРМА РЕГИСТРАЦИИ 
-            if (tb.Name == "YourNameRegisterTextBox" & tb.Text.Length >= 1)
-            {
-                //if (!Regex.IsMatch(tb.Text, @"^[а-яё]+$"))
-                //{
-                //    BorderForNameRegisterTextBox.Background = colorError;
-                //    return false;
-                //}
-
-                //tbBorderForNameRegisterTextBoxBackground = Brushes.White;
             }
 
             //КАТЕГОРИЯ
@@ -196,5 +186,55 @@ namespace Warehouse
 
             return true;
         }
+
+        public static bool CanUserPressRegButton(TextBox tb)
+        {
+            
+            if (tb.Name == "NameRegisterTextBox" & tb != null)
+            {
+                if (!Regex.IsMatch(tb.Text, @"^[A-ЯЁ][а-яё]+$"))
+                {
+                    tb.Foreground = colorError;
+                    return false;
+                }
+
+
+                tb.Foreground = colorCorrect;
+            }
+
+            if (tb.Name == "EmailRegisterTextBox" & tb != null)
+            {
+
+
+                if (!Regex.IsMatch(tb.Text, @"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$"))
+                {
+                    tb.Foreground = colorError;
+                    return false;
+                }
+
+                tb.Foreground = colorCorrect;
+            }
+
+            if (tb.Name == "PasRegisterTextBox" & tb != null)
+            {
+
+                if (!Regex.IsMatch(tb.Text, @"^[a-zA-Z0-9]+$"))
+                {
+                    tb.Foreground = colorError;
+                    return false;
+                }
+
+                if (tb.Text.Length <= 4)
+                {
+                    tb.Foreground = colorError;
+                    return false;
+                }
+
+                tb.Foreground = colorCorrect;
+            }
+
+            return true;
+        }
     }
+    
 }

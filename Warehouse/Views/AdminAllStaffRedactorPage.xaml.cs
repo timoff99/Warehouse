@@ -16,6 +16,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Warehouse.Models;
+using Warehouse.Views.Add;
 
 namespace Warehouse.Views
 {
@@ -49,8 +50,6 @@ namespace Warehouse.Views
         {
             using (db = new DatabaseEntities())
             {
-                //string connectionStr = db.Database.Connection.ConnectionString;
-
                 //«Ответственное лицо»
                 if (cb == comboBoxItrmsResponsibleHuman)
                 {
@@ -117,9 +116,9 @@ namespace Warehouse.Views
             {
                 TextBox tb = sender as TextBox;
                 Validation.TextChanged(tb);
-                if (Validation.TextChanged(textBoxInventItemsName) && Validation.TextChanged(textBoxItemsAmmount)
-                    && Validation.TextChanged(textBoxInventItemsPrice) && Validation.TextChanged(textBoxInventItemsArrivalData)
-                    && Validation.TextChanged(textBoxInventItemsPeriodOfStorage))
+                if (Validation.TextChanged(textBoxStaffItemsName) && Validation.TextChanged(textBoxItemsAmmount)
+                    && Validation.TextChanged(textBoxItemsPrice) && Validation.TextChanged(textBoxItemsArrivalData)
+                    && Validation.TextChanged(textBoxItemsPeriodOfStorage))
                     ButtonUpdateGoodsInfo.IsEnabled = true; //отключение кнопки обновить
                 else
                     ButtonUpdateGoodsInfo.IsEnabled = false;
@@ -150,7 +149,7 @@ namespace Warehouse.Views
                             updatedStaffItem = db.StaffItems.Where(x => x.Id == rowView.Id).FirstOrDefault();
 
                             //Название
-                            updatedStaffItem.ItemName = textBoxInventItemsName.Text.ToString();
+                            updatedStaffItem.ItemName = textBoxStaffItemsName.Text.ToString();
 
                             //Кол-во
                             bool ammountIsParsed = int.TryParse(textBoxItemsAmmount.Text, out int _ammount);
@@ -160,17 +159,17 @@ namespace Warehouse.Views
                                 updatedStaffItem.Ammount = _ammount;
 
                             //Цена
-                            bool priceIsParsed = int.TryParse(textBoxInventItemsPrice.Text, out int _price);
+                            bool priceIsParsed = int.TryParse(textBoxItemsPrice.Text, out int _price);
                             if (!priceIsParsed)
                                 updatedStaffItem.Price = null;
                             else
                                 updatedStaffItem.Price = _price;
 
                             //Дата покупки
-                            updatedStaffItem.ArrivalData = textBoxInventItemsArrivalData.Text;
+                            updatedStaffItem.ArrivalData = textBoxItemsArrivalData.Text;
 
                             //Срок службы (число)
-                            bool lifeTimeIsParsed = int.TryParse(textBoxInventItemsPeriodOfStorage.Text, out int _lifeTime);
+                            bool lifeTimeIsParsed = int.TryParse(textBoxItemsPeriodOfStorage.Text, out int _lifeTime);
                             if (!lifeTimeIsParsed)
                                 updatedStaffItem.PeriodOfStorage = null;
                             else
@@ -188,11 +187,11 @@ namespace Warehouse.Views
                                 updatedStaffItem.FK_Category = null;
 
                             //Обновление срока службы (дата списания)
-                            if (textBoxInventItemsArrivalData.Text != "")
+                            if (textBoxItemsArrivalData.Text != "")
                             {
-                                if (textBoxInventItemsPeriodOfStorage.Text != "")
+                                if (textBoxItemsPeriodOfStorage.Text != "")
                                 {
-                                    DateTime buyDateFromTextBox = Convert.ToDateTime(textBoxInventItemsArrivalData.Text);
+                                    DateTime buyDateFromTextBox = Convert.ToDateTime(textBoxItemsArrivalData.Text);
                                     updatedStaffItem.OffData = buyDateFromTextBox.AddMonths(_lifeTime).ToString("dd.MM.yyyy");
                                 }
                             }
@@ -285,6 +284,28 @@ namespace Warehouse.Views
             FillComboBox(comboBoxItrmsResponsibleHuman);
             FillComboBox(comboBoxItemsCategories);
             FillDataGrid();
+        }
+
+        private void OpenAddItemButton_Click(object sender, RoutedEventArgs e)
+        {
+            AddItemWindow addItemWindow = new AddItemWindow();
+            addItemWindow.ShowDialog();
+            FillDataGrid();
+        }
+
+        private void DeleteItemButton_Click(object sender, RoutedEventArgs e)
+        {
+            using(db = new DatabaseEntities())
+            {
+                StaffItems selectedItem = MainDataGrid.SelectedItem as StaffItems;
+
+                var item = db.StaffItems.Where(x => x.Id == selectedItem.Id).FirstOrDefault();
+                db.StaffItems.Remove(item);
+                db.Entry(item).State = EntityState.Deleted;
+                db.SaveChanges();
+
+                FillDataGrid();
+            }
         }
     }
 }

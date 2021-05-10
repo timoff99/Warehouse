@@ -80,20 +80,20 @@
                 </Grid.RowDefinitions>
 
                 <Label Content="Наименование" Grid.Row="0" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold" Foreground="#6f7a8b"/>
-                <TextBox x:Name="textBoxInventItemsName" Grid.Row="0" MaxLength="25" Height="30" Margin="10,20,10,0" Text="{Binding Path=SelectedItem.ItemName, ElementName=MainDataGrid, Mode=OneWay}" VerticalAlignment="Center" HorizontalAlignment="Stretch" Style="{StaticResource RightTextBox}" KeyUp="GoodsInfoValidation_TextChangedEvent" />
+                <TextBox x:Name="textBoxStaffItemsName" Grid.Row="0" MaxLength="25" Height="30" Margin="10,20,10,0" Text="{Binding Path=SelectedItem.ItemName, ElementName=MainDataGrid, Mode=OneWay}" VerticalAlignment="Center" HorizontalAlignment="Stretch" Style="{StaticResource RightTextBox}" KeyUp="GoodsInfoValidation_TextChangedEvent" />
 
 
                 <Label Content="Количество" Grid.Row="1" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold" Foreground="#6f7a8b"/>
                 <TextBox x:Name="textBoxItemsAmmount" Grid.Row="1" MaxLength="25" Height="30" Margin="10,20,10,0" Text="{Binding Path=SelectedItem.Ammount, ElementName=MainDataGrid, Mode=OneWay}" VerticalAlignment="Center" HorizontalAlignment="Stretch" Style="{StaticResource RightTextBox}" KeyUp="GoodsInfoValidation_TextChangedEvent"  />
 
                 <Label Content="Цена" Grid.Row="2" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold" Foreground="#6f7a8b"/>
-                <TextBox x:Name="textBoxInventItemsPrice" Grid.Row="2" MaxLength="25" Height="30" Margin="10,20,10,0" Text="{Binding Path=SelectedItem.Price, ElementName=MainDataGrid, Mode=OneWay}" VerticalAlignment="Center" HorizontalAlignment="Stretch" Style="{StaticResource RightTextBox}" KeyUp="GoodsInfoValidation_TextChangedEvent"  />
+                <TextBox x:Name="textBoxItemsPrice" Grid.Row="2" MaxLength="25" Height="30" Margin="10,20,10,0" Text="{Binding Path=SelectedItem.Price, ElementName=MainDataGrid, Mode=OneWay}" VerticalAlignment="Center" HorizontalAlignment="Stretch" Style="{StaticResource RightTextBox}" KeyUp="GoodsInfoValidation_TextChangedEvent"  />
 
                 <Label Content="Дата привоза" Grid.Row="3" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold" Foreground="#6f7a8b"/>
-                <TextBox x:Name="textBoxInventItemsArrivalData" Grid.Row="3" MaxLength="25" Height="30" Margin="10,20,10,0" Text="{Binding Path=SelectedItem.ArrivalData, ElementName=MainDataGrid, Mode=OneWay}" VerticalAlignment="Center" HorizontalAlignment="Stretch" Style="{StaticResource RightTextBox}" KeyUp="GoodsInfoValidation_TextChangedEvent"  />
+                <TextBox x:Name="textBoxItemsArrivalData" Grid.Row="3" MaxLength="25" Height="30" Margin="10,20,10,0" Text="{Binding Path=SelectedItem.ArrivalData, ElementName=MainDataGrid, Mode=OneWay}" VerticalAlignment="Center" HorizontalAlignment="Stretch" Style="{StaticResource RightTextBox}" KeyUp="GoodsInfoValidation_TextChangedEvent"  />
 
                 <Label Content="Период хранения" Grid.Row="4" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold" Foreground="#6f7a8b"/>
-                <TextBox x:Name="textBoxInventItemsPeriodOfStorage" Grid.Row="4" MaxLength="25" Height="30" Margin="10,20,10,0" Text="{Binding Path=SelectedItem.PeriodOfStorage, ElementName=MainDataGrid, Mode=OneWay}" VerticalAlignment="Center" HorizontalAlignment="Stretch" Style="{StaticResource RightTextBox}" KeyUp="GoodsInfoValidation_TextChangedEvent"  />
+                <TextBox x:Name="textBoxItemsPeriodOfStorage" Grid.Row="4" MaxLength="25" Height="30" Margin="10,20,10,0" Text="{Binding Path=SelectedItem.PeriodOfStorage, ElementName=MainDataGrid, Mode=OneWay}" VerticalAlignment="Center" HorizontalAlignment="Stretch" Style="{StaticResource RightTextBox}" KeyUp="GoodsInfoValidation_TextChangedEvent"  />
 
                 <Label Content="Отв. сотрудник" Grid.Row="5" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold" Foreground="#6f7a8b"/>
                 <ComboBox x:Name="comboBoxItrmsResponsibleHuman" Grid.Row="5" Text="{Binding Path=SelectedItem.FK_ResponsibleEmployee, ElementName=MainDataGrid, Mode=OneWay}" IsEditable="True" HorizontalAlignment="Stretch"  Margin="10,20,10,0" VerticalAlignment="Center" Height="30" />
@@ -110,7 +110,7 @@
                 
             </Grid>
         </ScrollViewer>
-        <StackPanel Grid.Row="2" Orientation="Horizontal">
+        <StackPanel Grid.Row="2" Orientation="Horizontal" >
             <Button x:Name="buttonReport" HorizontalAlignment="Right" Margin="10,0,10,0" VerticalAlignment="Top" Padding="0,0,0,0" Height="35" Width="140">
                 <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Stretch">
                     <materialDesign:PackIcon Kind="Backspace" Width="20" Height="20" Margin="0 0 10 0"/>
@@ -123,15 +123,15 @@
                     <TextBlock Text="Получить QR-код" HorizontalAlignment="Right"/>
                 </StackPanel>
             </Button>
-            <Button x:Name="buttonDeleteItem" HorizontalAlignment="Right" Margin="10,0,10,0" VerticalAlignment="Top" Padding="0,0,0,0" Height="35" Width="140">
+            <Button x:Name="buttonDeleteItem" HorizontalAlignment="Right" Margin="10,0,10,0" VerticalAlignment="Top" Padding="0,0,0,0" Height="35" Width="140" Click="DeleteItemButton_Click">
                 <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Stretch">
-                    <materialDesign:PackIcon Kind="Backspace" Width="20" Height="20" Margin="0 0 10 0"/>
+                    <materialDesign:PackIcon Kind="Delete" Width="20" Height="20" Margin="0 0 10 0"/>
                     <TextBlock Text="Удалить запись" HorizontalAlignment="Right"/>
                 </StackPanel>
             </Button>
-            <Button x:Name="buttonAddItem" HorizontalAlignment="Right" Margin="10,0,10,0" VerticalAlignment="Top" Padding="0,0,0,0" Height="35" Width="150">
+            <Button x:Name="buttonAddItem" HorizontalAlignment="Right" Margin="10,0,10,0" VerticalAlignment="Top" Padding="0,0,0,0" Height="35" Width="150" Click="OpenAddItemButton_Click">
                 <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Stretch">
-                    <materialDesign:PackIcon Kind="Backspace" Width="20" Height="20" Margin="0 0 10 0"/>
+                    <materialDesign:PackIcon Kind="PlusBox" Width="20" Height="20" Margin="0 0 10 0"/>
                     <TextBlock Text="Добавить запись" HorizontalAlignment="Right"/>
                 </StackPanel>
             </Button>

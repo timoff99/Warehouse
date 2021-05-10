@@ -19,7 +19,8 @@
                     <Button x:Name="b1" Margin="10" Content="Главная" Click="OpenAdminWelcomPage_Click"/>
                     <Button x:Name="b2" Margin="10" Content="Все вещи" Click="OpenAdminAllStaffRedactorPage_Click"/>
                     <Button x:Name="b3" Margin="10" Content="Сотрудники" Click="OpenAdminEmployeesRedactorPage_Click"/>
-                    <Button x:Name="b4" Margin="10" Content="Категории" Click="OpenAdminWelcomPage_Click"/>
+                    <Button x:Name="b4" Margin="10" Content="Категории" Click="OpenAdminCategoryRedactorPage_Click"/>
+                    <Button x:Name="b5" Margin="10" Content="Пользователи" Click="OpenAdminUsersRedactorPage_Click"/>
 
                 </StackPanel>
                 <Frame NavigationUIVisibility="Hidden" x:Name="Framef" Grid.Column="1" Grid.ColumnSpan="2"/>

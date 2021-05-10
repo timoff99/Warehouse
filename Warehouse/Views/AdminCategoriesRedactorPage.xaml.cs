@@ -23,26 +23,26 @@ namespace Warehouse.Views
     /// <summary>
     /// Логика взаимодействия для AdminEmployeesRedactorPage.xaml
     /// </summary>
-    public partial class AdminEmployeesRedactorPage : UserControl
+    public partial class AdminCategoriesRedactorPage : UserControl
     {
         DatabaseEntities db = new DatabaseEntities();
-        public AdminEmployeesRedactorPage()
+        public AdminCategoriesRedactorPage()
         {
             InitializeComponent();
             FillDataGrid();
         }
         public void FillDataGrid()
         {
-            using ( db = new DatabaseEntities())
+            using (db = new DatabaseEntities())
             {
-                var allItems = db.Employees;
-                BindingList<Employees> Employees = new BindingList<Employees>();
-                foreach (Employees s in allItems)
+                var allItems = db.Categories;
+                BindingList<Categories> categories = new BindingList<Categories>();
+                foreach (Categories s in allItems)
                 {
 
-                    Employees.Add(s);
+                    categories.Add(s);
                 }
-                EmployeesDataGrid.ItemsSource = Employees;
+                CategoriesDataGrid.ItemsSource = categories;
             }
         }
 
@@ -53,19 +53,18 @@ namespace Warehouse.Views
 
         private void TextBoxChangedSearchItems_Event(object sender, KeyEventArgs e)
         {
-            using ( db = new DatabaseEntities()) // в фильтре многовато условий подчистить 
+            using (db = new DatabaseEntities()) // в фильтре многовато условий подчистить 
             {
-                var filter = db.Employees.Where(x => x.Name.Contains(textBoxItemsSearch.Text) ||
-                                                x.Phone.ToString().Contains(textBoxItemsSearch.Text) ||
-                                                x.Email.ToString().Contains(textBoxItemsSearch.Text)
+                var filter = db.Categories.Where(x => x.Name.Contains(textBoxItemsSearch.Text) ||
+                                                x.Description.ToString().Contains(textBoxItemsSearch.Text)
                                                 );
-                BindingList<Employees> Employees = new BindingList<Employees>();
+                BindingList<Categories> categories = new BindingList<Categories>();
                 foreach (var item in filter)
                 {
-                    Employees.Add(item);
+                    categories.Add(item);
 
                 }
-                EmployeesDataGrid.ItemsSource = Employees;
+                CategoriesDataGrid.ItemsSource = categories;
             }
         }
 
@@ -77,12 +76,11 @@ namespace Warehouse.Views
 
         private void GoodsInfoValidation_TextChangedEvent(object sender, KeyEventArgs e)
         {
-            if (EmployeesDataGrid.SelectedCells.Count == 3)
+            if (CategoriesDataGrid.SelectedCells.Count == 3)
             {
                 TextBox tb = sender as TextBox;
                 Validation.TextChanged(tb);
-                if (Validation.TextChanged(textBoxEmployeeName) && Validation.TextChanged(textBoxEmployeePhone)
-                    && Validation.TextChanged(textBoxEmployeeEmail))
+                if (Validation.TextChanged(textBoxCategoryName) && Validation.TextChanged(textBoxCategoryDescription))
                     ButtonUpdateGoodsInfo.IsEnabled = true; //отключение кнопки обновить
                 else
                     ButtonUpdateGoodsInfo.IsEnabled = false;
@@ -91,41 +89,37 @@ namespace Warehouse.Views
 
         private void ButtonUpdateGoodsInfo_Click(object sender, RoutedEventArgs e)
         {
-            UpdateAndSaveChanges("Employees");
+            UpdateAndSaveChanges("Categories");
         }
         public void UpdateAndSaveChanges(string WhatSave)
         {
             try
             {
-                using ( db = new DatabaseEntities())
+                using (db = new DatabaseEntities())
                 {
-                    //Логика обновления СОТРУДНИКА
-                    if (WhatSave == "Employees")
+                    //Логика обновления КАТЕГОРИИ 
+                    if (WhatSave == "Categories")
                     {
-                        if (EmployeesDataGrid.SelectedCells.Count == 3)
+                        if (CategoriesDataGrid.SelectedCells.Count == 2)
                         {
                             StaffItems updatedStaffItem = new StaffItems();
-                            Employees rowView = EmployeesDataGrid.SelectedItem as Employees;
 
-                            Employees updatedEmployee = new Employees();
+                            Categories category = CategoriesDataGrid.SelectedItem as Categories;
 
                             //поиск обновляемого элемента в контексте по ID (Primary key)
-                            updatedEmployee = db.Employees.Where(x => x.Id == rowView.Id).FirstOrDefault();
-                            updatedStaffItem = db.StaffItems.Where(x => x.Employees.Id == rowView.Id).FirstOrDefault();
-                            //поиск обновляемого элемента в контексте по ID (Primary key)
-                            updatedEmployee.Name = textBoxEmployeeName.Text.ToString();
-                            updatedEmployee.Phone = textBoxEmployeePhone.Text.ToString();
-                            updatedEmployee.Email = textBoxEmployeeEmail.Text.ToString();
+                            category = db.Categories.Where(x => x.Id == category.Id).FirstOrDefault();
+                            category.Name = textBoxCategoryName.Text.ToString();
+                            category.Description = textBoxCategoryDescription.Text.ToString();
 
-                            db.Entry(updatedEmployee).State = EntityState.Modified;
-                            updatedStaffItem.Employees = updatedEmployee;
-                            updatedStaffItem.FK_ResponsibleEmployee = updatedEmployee.Name;
+
+                            db.Entry(category).State = EntityState.Modified;
                             db.SaveChanges();
 
                             FillDataGrid();
 
                         }
                     }
+
                 }
             }
             catch (Exception exteption)
@@ -136,18 +130,18 @@ namespace Warehouse.Views
 
         private void AddEmployeeButton_Click(object sender, RoutedEventArgs e)
         {
-            AddEmployeesWindow addEmployeesWindow = new AddEmployeesWindow();
-            addEmployeesWindow.ShowDialog();
+            AddCategoriesWindow addCategoriesWindow = new AddCategoriesWindow();
+            addCategoriesWindow.ShowDialog();
             FillDataGrid();
         }
         private void DeleteItemButton_Click(object sender, RoutedEventArgs e)
         {
             using (db = new DatabaseEntities())
             {
-                Employees selectedItem = EmployeesDataGrid.SelectedItem as Employees;
+                Categories selectedItem = CategoriesDataGrid.SelectedItem as Categories;
 
-                var item = db.Employees.Where(x => x.Id == selectedItem.Id).FirstOrDefault();
-                db.Employees.Remove(item);
+                var item = db.Categories.Where(x => x.Id == selectedItem.Id).FirstOrDefault();
+                db.Categories.Remove(item);
                 db.Entry(item).State = EntityState.Deleted;
                 db.SaveChanges();
 

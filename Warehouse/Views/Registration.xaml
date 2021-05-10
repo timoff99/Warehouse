@@ -17,36 +17,26 @@
                 <materialDesign:PackIcon Kind="ClipboardEditOutline" Height="60" Width="60" HorizontalAlignment="Center"/>
 
                 <TextBlock Text="Регистация" FontSize="30" FontWeight="Bold" Margin="0 0 0 20" HorizontalAlignment="Center"/>
-                
+
 
                 <Grid Margin="0 0 0 20">
 
                     <Button HorizontalAlignment="Right" Content="Войти" Style="{StaticResource MaterialDesignFlatButton}" Click="Button_Click"/>
                 </Grid>
+                
                 <StackPanel Orientation="Horizontal">
-                    <TextBox x:Name="NameRegisterTextBox" materialDesign:HintAssist.Hint="Введите ваше имя" Width="444" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
+                    <TextBox x:Name="NameRegisterTextBox"  materialDesign:HintAssist.Hint="Введите ваше имя" Width="444" Style="{StaticResource MaterialDesignFloatingHintTextBox}"  TextChanged="RegisterValidation_TextChangedEvent"/>
                     <materialDesign:PackIcon Kind="TooltipText" VerticalAlignment="Center" Width="20" Height="20">
-                        <materialDesign:PackIcon.ToolTip>
+                            <materialDesign:PackIcon.ToolTip>
                             <ToolTip Placement="Mouse">
                                 <TextBlock Text="Имя на русском с Заглавной буквы"/>
                             </ToolTip>
                         </materialDesign:PackIcon.ToolTip>
                     </materialDesign:PackIcon>
                 </StackPanel >
-
+                
                 <StackPanel Orientation="Horizontal">
-                    <TextBox  x:Name="PasRegisterTextBox" materialDesign:HintAssist.Hint="Введите пароль" Width="444" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
-                    <materialDesign:PackIcon Kind="TooltipText" VerticalAlignment="Center" Width="20" Height="20">
-                        <materialDesign:PackIcon.ToolTip>
-                            <ToolTip Placement="Mouse">
-                                <TextBlock Text="Только латинские буквы и цифыр (от 5 символов)"/>
-                            </ToolTip>
-                        </materialDesign:PackIcon.ToolTip>
-                    </materialDesign:PackIcon>
-                </StackPanel>
-
-                <StackPanel Orientation="Horizontal">
-                    <TextBox  x:Name="EmailRegisterTextBox" materialDesign:HintAssist.Hint="Email" Width="444" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
+                    <TextBox  x:Name="EmailRegisterTextBox" materialDesign:HintAssist.Hint="Email" Width="444" Style="{StaticResource MaterialDesignFloatingHintTextBox}" TextChanged="RegisterValidation_TextChangedEvent"/>
                     <materialDesign:PackIcon Kind="TooltipText" VerticalAlignment="Center" Width="20" Height="20">
                         <materialDesign:PackIcon.ToolTip>
                             <ToolTip Placement="Mouse">
@@ -55,7 +45,18 @@
                         </materialDesign:PackIcon.ToolTip>
                     </materialDesign:PackIcon>
                 </StackPanel>
-                <Button Content="Зарегестрировать" Margin="0 20" Click="Button_Click_1"/>
+
+                <StackPanel Orientation="Horizontal">
+                    <TextBox  x:Name="PasRegisterTextBox" materialDesign:HintAssist.Hint="Введите пароль" Width="444" Style="{StaticResource MaterialDesignFloatingHintTextBox}" TextChanged="RegisterValidation_TextChangedEvent"/>
+                    <materialDesign:PackIcon Kind="TooltipText" VerticalAlignment="Center" Width="20" Height="20">
+                        <materialDesign:PackIcon.ToolTip>
+                            <ToolTip Placement="Mouse">
+                                <TextBlock Text="Только латинские буквы и цифыр (от 5 символов)"/>
+                            </ToolTip>
+                        </materialDesign:PackIcon.ToolTip>
+                    </materialDesign:PackIcon>
+                </StackPanel>
+                <Button x:Name="RegistrationButton" Content="Зарегестрировать" IsEnabled="False" Margin="0 20" Click="Button_Click_1"/>
             </StackPanel>
         </Border>
     </Grid>

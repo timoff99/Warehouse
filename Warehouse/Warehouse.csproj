@@ -97,11 +97,29 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Validation.cs" />
+    <Compile Include="Views\Add\AddCategoriesWindow.xaml.cs">
+      <DependentUpon>AddCategoriesWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Add\AddEmployeesWindow.xaml.cs">
+      <DependentUpon>AddEmployeesWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Add\AddItemWindow.xaml.cs">
+      <DependentUpon>AddItemWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Add\AddUsersWindow.xaml.cs">
+      <DependentUpon>AddUsersWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\AdminAllStaffRedactorPage.xaml.cs">
       <DependentUpon>AdminAllStaffRedactorPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\AdminCategoriesRedactorPage.xaml.cs">
+      <DependentUpon>AdminCategoriesRedactorPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\AdminEmployeesRedactorPage.xaml.cs">
       <DependentUpon>AdminEmployeesRedactorPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AdminUsersRedactorPage.xaml.cs">
+      <DependentUpon>AdminUsersRedactorPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\AdminWelcomePage.xaml.cs">
       <DependentUpon>AdminWelcomePage.xaml</DependentUpon>
@@ -125,11 +143,35 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\Add\AddCategoriesWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Add\AddEmployeesWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Add\AddItemWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Add\AddUsersWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\AdminAllStaffRedactorPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\AdminCategoriesRedactorPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\AdminEmployeesRedactorPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\AdminUsersRedactorPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -196,6 +238,7 @@
   <ItemGroup>
     <Resource Include="Image\склад.jpg" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\MaterialDesignThemes.4.0.0\build\MaterialDesignThemes.targets" Condition="Exists('..\packages\MaterialDesignThemes.4.0.0\build\MaterialDesignThemes.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
