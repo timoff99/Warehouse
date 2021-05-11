@@ -21,8 +21,10 @@
 
                 <Grid Margin="0 0 0 20">
 
-                    <Button HorizontalAlignment="Right" Content="Войти" Style="{StaticResource MaterialDesignFlatButton}" Click="Button_Click"/>
+                    <Button HorizontalAlignment="Right" Content="Войти" Style="{StaticResource MaterialDesignFlatButton}" Click="EnterLoginButton_Click"/>
                 </Grid>
+                
+                    <ProgressBar x:Name="loading" Style="{StaticResource MaterialDesignCircularProgressBar}" Value="0" IsIndeterminate="True" Visibility="Hidden"/>
                 
                 <StackPanel Orientation="Horizontal">
                     <TextBox x:Name="NameRegisterTextBox"  materialDesign:HintAssist.Hint="Введите ваше имя" Width="444" Style="{StaticResource MaterialDesignFloatingHintTextBox}"  TextChanged="RegisterValidation_TextChangedEvent"/>
@@ -56,7 +58,7 @@
                         </materialDesign:PackIcon.ToolTip>
                     </materialDesign:PackIcon>
                 </StackPanel>
-                <Button x:Name="RegistrationButton" Content="Зарегестрировать" IsEnabled="False" Margin="0 20" Click="Button_Click_1"/>
+                <Button x:Name="RegistrationButton" Content="Зарегестрировать" IsEnabled="False" Margin="0 20" Click="RegistrationButton_Click"/>
             </StackPanel>
         </Border>
     </Grid>

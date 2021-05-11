@@ -12,6 +12,11 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Net;
+
+using GMap.NET;
+using GMap.NET.MapProviders;
+using GMap.NET.WindowsPresentation;
 
 namespace Warehouse.Views.User
 {
@@ -28,19 +33,34 @@ namespace Warehouse.Views.User
 
         private void mapView_Loaded(object sender, RoutedEventArgs e)
         {
-            GMap.NET.GMaps.Instance.Mode = GMap.NET.AccessMode.ServerAndCache;
-            // choose your provider here
-            mapView.MapProvider = GMap.NET.MapProviders.OpenStreetMapProvider.Instance;
-            mapView.MinZoom = 2;
+            mapView.Bearing = 0;
+            mapView.MinZoom = 3;
             mapView.MaxZoom = 17;
             // whole world zoom
-            mapView.Zoom = 2;
+            mapView.Zoom = 17;
             // lets the map use the mousewheel to zoom
-            mapView.MouseWheelZoomType = GMap.NET.MouseWheelZoomType.MousePositionAndCenter;
+            mapView.MouseWheelZoomType = MouseWheelZoomType.MousePositionAndCenter;
             // lets the user drag the map
             mapView.CanDragMap = true;
             // lets the user drag the map with the left mouse button
             mapView.DragButton = MouseButton.Left;
+            mapView.ShowCenter = false;
+            GMaps.Instance.Mode = AccessMode.ServerAndCache;
+            // choose your provider here
+            mapView.MapProvider = GMapProviders.YandexMap;
+            mapView.Position = new PointLatLng(53.900834993450694, 27.412874965790175);
+            GMapMarker marker = new GMapMarker(new PointLatLng(53.900834993450694, 27.412874965790177));
+
+            marker.Shape = new Image
+            {
+                Source = new BitmapImage(new Uri(@"C:\Users\User\Pictures\marker1.png")),
+                Width = 25,
+                Height = 25,
+                ToolTip = "Warehouse",
+            };
+            
+           
+            mapView.Markers.Add(marker);
         }
     }
 }

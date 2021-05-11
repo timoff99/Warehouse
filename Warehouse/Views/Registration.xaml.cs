@@ -23,23 +23,25 @@ namespace Warehouse
     /// </summary>
     public partial class Registration : Window
     {
+        
         DatabaseEntities ctx;
         public Registration()
         {
             InitializeComponent();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void EnterLoginButton_Click(object sender, RoutedEventArgs e)
         {
             Login login = new Login();
-            Close();
             login.Show();
+            Close();
         }
 
-        private void Button_Click_1(object sender, RoutedEventArgs e)
+        private void RegistrationButton_Click(object sender, RoutedEventArgs e)
         {
             try
             {
+                loading.Visibility = Visibility.Visible;
                 using (ctx = new DatabaseEntities())
                 {
                     Users user = new Users()
@@ -51,9 +53,11 @@ namespace Warehouse
                     ctx.Users.Add(user);
                     ctx.Entry(user).State = EntityState.Added;
                     ctx.SaveChanges();
-
+                    loading.Visibility = Visibility.Hidden;
                     MessageBox.Show($"Пользователь зарегестрирован.","Успешно добавлен",MessageBoxButton.OK,MessageBoxImage.Information);
-
+                    Login login = new Login();
+                    login.Show();
+                    Close();
                 }
             }
             catch (Exception ex)

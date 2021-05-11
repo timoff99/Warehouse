@@ -24,17 +24,17 @@ namespace Warehouse
     /// </summary>
     public partial class Login : Window
     {
+        Registration registration = new Registration();
         DatabaseEntities db = new DatabaseEntities();
         public Login()
         {
             InitializeComponent();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void OpenRegistrationButton_Click(object sender, RoutedEventArgs e)
         {
-            Registration registration = new Registration();
-            Close();
-            registration.ShowDialog();
+            registration.Show();
+            Close();   
         }
 
         //Вход
@@ -75,6 +75,7 @@ namespace Warehouse
             {
                 MessageBox.Show($"Информация об ошибке: {ex.Message}", "Произошла ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
             }
+            MessageBox.Show($"Введите данные", "Произошла ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
         }
 
         //Восстановление пароля

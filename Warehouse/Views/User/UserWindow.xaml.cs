@@ -48,10 +48,5 @@ namespace Warehouse.Views.User
         {
             Framef.Content = UserMapPage;
         }
-
-        private void OpenAboutPage_Click(object sender, RoutedEventArgs e)
-        {
-            Framef.Content = UserAllStuffRedactorPage;
-        }
     }
 }
