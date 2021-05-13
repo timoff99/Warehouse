@@ -10,7 +10,7 @@
         WindowStartupLocation="CenterScreen"
         Title="AddItemWindow"
         ResizeMode="NoResize"
-        Loaded="_Loaded">
+        Loaded="_Loaded" Icon="/Warehouse;component/Image/Ico.ico">
     
     <Grid Background="WhiteSmoke">
         <Label Content="Наименование"  HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold" Foreground="#6f7a8b"/>

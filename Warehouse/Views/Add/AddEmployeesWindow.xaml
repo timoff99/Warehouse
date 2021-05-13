@@ -9,7 +9,7 @@
         Width="300"
         WindowStartupLocation="CenterScreen"
         Title="AddItemWindow"
-        ResizeMode="NoResize">
+        ResizeMode="NoResize" Icon="/Warehouse;component/Image/Ico.ico">
 
     <Grid Background="WhiteSmoke">
         <Label Content="Имя Фамилия"  HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold" Foreground="#6f7a8b"/>

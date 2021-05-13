@@ -63,7 +63,15 @@ namespace Warehouse.Views.Admin
         private void OpenAdminUsersRedactorPage_Click(object sender, RoutedEventArgs e)
         {
             Framef.Content = AdminUsersRedactorPage;
-            ;
+            
+        }
+
+        private void Exit(object sender, RoutedEventArgs e)
+        {
+            Login login = new Login();
+            login.Show();
+            Close();
+           
         }
     }
 }

@@ -48,5 +48,13 @@ namespace Warehouse.Views.User
         {
             Framef.Content = UserMapPage;
         }
+
+        private void Exit(object sender, RoutedEventArgs e)
+        {
+            Login login = new Login();
+            login.Show();
+            Close();
+
+        }
     }
 }

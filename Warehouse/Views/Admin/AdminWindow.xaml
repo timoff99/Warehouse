@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Warehouse.Views.Admin"
         mc:Ignorable="d"
-        Title="AdminWindow" Height="600" Width="1200" WindowStartupLocation="CenterScreen">
+        Title="AdminWindow" Height="600" Width="1200" WindowStartupLocation="CenterScreen" Icon="/Warehouse;component/Image/Ico.ico">
     <Grid Background="#ffdadada">
         <Border Background="White" CornerRadius="20">
             <Grid>
@@ -21,6 +21,7 @@
                     <Button x:Name="b3" Margin="10" Content="Сотрудники" Click="OpenAdminEmployeesRedactorPage_Click"/>
                     <Button x:Name="b4" Margin="10" Content="Категории" Click="OpenAdminCategoryRedactorPage_Click"/>
                     <Button x:Name="b5" Margin="10" Content="Пользователи" Click="OpenAdminUsersRedactorPage_Click"/>
+                    <Button x:Name="b6" Margin="10 260 10 20" Content="Выход" Click="Exit"/>
 
                 </StackPanel>
                 <Frame NavigationUIVisibility="Hidden" x:Name="Framef" Grid.Column="1" Grid.ColumnSpan="2"/>
