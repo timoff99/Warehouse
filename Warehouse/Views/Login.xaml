@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-        Title="User App" Height="600" Width="800">
+        Title="User App" Height="600" Width="800" Icon="/Warehouse;component/Image/Ico.ico">
     <Grid Background="#ffdadada">
         <Border MinWidth="400" Margin="15" Background="White" VerticalAlignment="Center" Padding="40" MaxWidth="550" CornerRadius="20">
             <Border.Effect>
@@ -20,15 +20,16 @@
 
                 <Grid Margin="0 0 0 20">
 
-                    <Button HorizontalAlignment="Right" Content="Регистрация" Style="{StaticResource MaterialDesignFlatButton}" Click="Button_Click"/>
+                    <Button HorizontalAlignment="Right" Content="Регистрация" Style="{StaticResource MaterialDesignFlatButton}" Click="OpenRegistrationButton_Click"/>
                 </Grid>
-                
-                    <TextBox materialDesign:HintAssist.Hint="Email" Width="444" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
-                                    
-                    <PasswordBox materialDesign:HintAssist.Hint="Введите пароль" Width="444" Style="{StaticResource MaterialDesignFloatingHintPasswordBox}"/>
+
+                <TextBox x:Name="LoginEmailTextBox" materialDesign:HintAssist.Hint="Email" Width="444" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
+
+                <PasswordBox x:Name="LoginPasswordBox" materialDesign:HintAssist.Hint="Введите пароль" Width="444" Style="{StaticResource MaterialDesignFloatingHintPasswordBox}"/>
                   
                 
-                <Button Content="Войти" Margin="0 20"/>
+                <Button Content="Войти" Margin="0 20" Click="ButtonEntry_Click"/>
+                <Button Content="Восстановить пароль" Click="ButtonRestorePassword_Click"/>
             </StackPanel>
         </Border>
     </Grid>

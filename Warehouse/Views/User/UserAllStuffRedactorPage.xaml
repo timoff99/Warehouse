@@ -1,0 +1,80 @@
+﻿<UserControl x:Class="Warehouse.Views.User.UserAllStuffRedactorPage"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Warehouse.Views.User"
+             xmlns:materialDesign ="http://materialdesigninxaml.net/winfx/xaml/themes"
+             mc:Ignorable="d" 
+             d:DesignHeight="600" d:DesignWidth="1000" Loaded="UserControl_Loaded">
+    <Grid Background="WhiteSmoke">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="3.5*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1.5*"/>
+            <RowDefinition Height="10*"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+
+        <TextBox x:Name="textBoxItemsSearch" Style="{StaticResource RightTextBox}" MaxLength="30" BorderBrush="#1e90ff" HorizontalAlignment="Stretch" Height="35" Margin="10,10,200,0" Padding="25,0,0,0" Text="Поиск..." VerticalAlignment="Top" GotFocus="TextBoxItemsSearchGotFocus_Event" KeyUp="TextBoxChangedSearchItems_Event"/>
+        <materialDesign:PackIcon Kind="Magnify" x:Name="imageSearch" HorizontalAlignment="Left" Height="20" Margin="15,18,0,0" VerticalAlignment="Top" Width="20"/>
+
+        <Button x:Name="buttonReset" HorizontalAlignment="Right" Margin="10,10,40,10" VerticalAlignment="Top" Padding="0,0,0,0" Height="35" Width="150" Click="ButtonResetSearchItems_Click">
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Stretch">
+                <materialDesign:PackIcon Kind="Backspace" Width="20" Height="20" Margin="0 0 20 0"/>
+                <TextBlock Text="Сброс поиска" HorizontalAlignment="Right"/>
+            </StackPanel>
+        </Button>
+
+        <DataGrid
+            x:Name="MainDataGrid"  
+            Grid.Row="1" Margin="5"
+            Grid.ColumnSpan="2"
+            Background="#eceff5" 
+            RowHeaderWidth="0" 
+            AlternatingRowBackground="#fbfcfe" 
+            HorizontalAlignment="Stretch" 
+            VerticalAlignment="Stretch"  
+            CanUserReorderColumns="True" 
+            CanUserResizeColumns="True" 
+            CanUserSortColumns="True" 
+            SelectionMode="Single" 
+            CanUserResizeRows="True"
+            AutoGenerateColumns="False"
+            IsReadOnly="True" 
+            HorizontalScrollBarVisibility="Hidden"
+            IsSynchronizedWithCurrentItem="True"
+            
+            ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle}" 
+            HorizontalGridLinesBrush="#dde8ef" 
+            CellStyle="{DynamicResource DataGridCellStyle}" 
+           >
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding Id}" Header="№" Width="0.6*"/>
+                <DataGridTextColumn Binding="{Binding ItemName}" Header="Наименование" Width="2.5*"/>
+                <DataGridTextColumn Binding="{Binding Ammount}" Header="Кол-во" Width="1*"/>
+                <DataGridTextColumn Binding="{Binding Price}" Header="Цена" Width="0.9*"/>
+                <DataGridTextColumn Binding="{Binding ArrivalData}" Header="Дата" Width="1.4*"/>
+                <DataGridTextColumn Binding="{Binding PeriodOfStorage}" Header="Срок" Width="1*"/>
+                <DataGridTextColumn Binding="{Binding OffData}" Header="Дата списания" Width="2*"/>
+                <DataGridTextColumn Binding="{Binding FK_ResponsibleEmployee}" Header="Ответственный" Width="2*"/>
+                <DataGridTextColumn Binding="{Binding FK_Category}" Header="Категория" Width="1.6*"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
+
+        
+        <StackPanel Grid.Row="2" Orientation="Horizontal" >
+            
+            <Button x:Name="buttonAdd" HorizontalAlignment="Right" Margin="10,0,10,0" VerticalAlignment="Top" Padding="0,0,0,0" Height="35" Width="200" Click="GetQRCode">
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Stretch">
+                    <materialDesign:PackIcon Kind="QrcodeScan" Width="20" Height="20" Margin="0 0 10 0"/>
+                    <TextBlock Text="Получить QR-код" HorizontalAlignment="Right"/>
+                </StackPanel>
+            </Button>
+        </StackPanel>
+    </Grid>
+</UserControl>

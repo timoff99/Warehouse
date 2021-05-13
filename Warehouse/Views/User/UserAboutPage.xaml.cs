@@ -13,14 +13,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Warehouse
+namespace Warehouse.Views.User
 {
     /// <summary>
-    /// Логика взаимодействия для UserControl1.xaml
+    /// Логика взаимодействия для UserAboutPage.xaml
     /// </summary>
-    public partial class UserControl1 : UserControl
+    public partial class UserAboutPage : UserControl
     {
-        public UserControl1()
+        public UserAboutPage()
         {
             InitializeComponent();
         }

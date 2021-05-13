@@ -1,0 +1,17 @@
+﻿<UserControl x:Class="Warehouse.Views.User.UserMapPage"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Warehouse.Views.User"
+             xmlns:gmaps="clr-namespace:GMap.NET.WindowsPresentation;assembly=GMap.NET.WindowsPresentation"
+             mc:Ignorable="d" 
+             d:DesignHeight="600" d:DesignWidth="1000">
+    <Grid x:Name="MainGrid" Background="PeachPuff">
+
+        <TextBlock HorizontalAlignment="Center" Text="Место расположения нашего склада" FontWeight="Bold" FontSize="50"
+                   FontFamily=" Comic Sans MS"/>
+        <gmaps:GMapControl x:Name="mapView" Loaded="mapView_Loaded" Height="500" VerticalAlignment="Bottom"/>
+       
+    </Grid> 
+</UserControl>

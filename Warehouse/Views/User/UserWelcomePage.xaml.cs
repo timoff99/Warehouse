@@ -12,17 +12,28 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Warehouse.Models;
 
-namespace Warehouse
+namespace Warehouse.Views.User
 {
     /// <summary>
-    /// Логика взаимодействия для UserControl2.xaml
+    /// Логика взаимодействия для UserWelcomePage.xaml
     /// </summary>
-    public partial class UserControl2 : UserControl
+    public partial class UserWelcomePage : UserControl
     {
-        public UserControl2()
+        public UserWelcomePage()
         {
             InitializeComponent();
+        }
+        public UserWelcomePage(Users user)
+        {
+            InitializeComponent();
+            DataContext = this;
+
+            using (DatabaseEntities ctx = new DatabaseEntities())
+            {
+                userName.Text = user.Name;
+            }
         }
     }
 }

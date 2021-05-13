@@ -1,0 +1,29 @@
+﻿<Window x:Class="Warehouse.Views.Add.AddEmployeesWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Warehouse.Views.Add"
+        mc:Ignorable="d"
+        Height="600"
+        Width="300"
+        WindowStartupLocation="CenterScreen"
+        Title="AddItemWindow"
+        ResizeMode="NoResize" Icon="/Warehouse;component/Image/Ico.ico">
+
+    <Grid Background="WhiteSmoke">
+        <Label Content="Имя Фамилия"  HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold" Foreground="#6f7a8b"/>
+        <TextBox x:Name="textBoxEmployeeName"  MaxLength="25" Height="30" Width="265" Margin="10,40,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Style="{StaticResource RightTextBox}" TextChanged="Validation_TextChangedEvent"/>
+
+        <Label Content="Номер телефона"  HorizontalAlignment="Left" Margin="10,80,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold" Foreground="#6f7a8b"/>
+        <TextBox x:Name="textBoxEmployeePhone"  MaxLength="25" Height="30" Width="265" Margin="10,110,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Style="{StaticResource RightTextBox}" TextChanged="Validation_TextChangedEvent"/>
+
+        <Label Content="Email"  HorizontalAlignment="Left" Margin="10,150,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold" Foreground="#6f7a8b"/>
+        <TextBox x:Name="textBoxEmployeeEmail"  MaxLength="25" Height="30" Width="265" Margin="10,180,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Style="{StaticResource RightTextBox}" TextChanged="Validation_TextChangedEvent"/>
+
+        
+        <Button x:Name="ButtonAdd" Content="Добавить" IsEnabled="False"  HorizontalAlignment="Center" Width="150" Height="40" Margin="0,230,0,0" VerticalAlignment="Top" FontSize="20" FontWeight="Bold"  Style="{StaticResource MaterialDesignFlatLightBgButton}" Click="AddNewItemsButton_Click"/>
+
+
+    </Grid>
+</Window>
