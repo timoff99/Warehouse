@@ -111,7 +111,7 @@ namespace Warehouse.Views.User
                 FillDataGrid();
             }
         }
-
+        //QR-Code
         private void GetQRCode(object sender, RoutedEventArgs e)
         {
             if (MainDataGrid.SelectedCells.Count == 9)
@@ -128,7 +128,7 @@ namespace Warehouse.Views.User
                         ItemForWhomGeneratedQR = db.StaffItems.Where(x => x.Id == rowView.Id).FirstOrDefault();
 
                         QRCodeGenerator qrGenerator = new QRCodeGenerator();
-                        QRCodeData qrCodeData = qrGenerator.CreateQrCode($"Инвентарный №: {ItemForWhomGeneratedQR.Id} | Наименование: {ItemForWhomGeneratedQR.ItemName} | Дата покупки: {ItemForWhomGeneratedQR.ArrivalData}", QRCodeGenerator.ECCLevel.Q);
+                        QRCodeData qrCodeData = qrGenerator.CreateQrCode($" №: {ItemForWhomGeneratedQR.Id} | Наименование: {ItemForWhomGeneratedQR.ItemName} | Дата Привоза: {ItemForWhomGeneratedQR.ArrivalData}", QRCodeGenerator.ECCLevel.Q);
                         QRCode qrCode = new QRCode(qrCodeData);
                         System.Drawing.Bitmap qrCodeImage = qrCode.GetGraphic(150);
 
@@ -159,7 +159,7 @@ namespace Warehouse.Views.User
                 }
             }
 
-            if (MainDataGrid.SelectedCells.Count < 10)
+            if (MainDataGrid.SelectedCells.Count < 9)
                 MessageBox.Show($"Вы не выделили ни одного элемента. Нажмите на элемент и попробуйте снова.", "Выделите элемент", MessageBoxButton.OK, MessageBoxImage.Information);
 
         }

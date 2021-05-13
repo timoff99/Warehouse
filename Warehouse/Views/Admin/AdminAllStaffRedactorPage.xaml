@@ -111,18 +111,6 @@
             </Grid>
         </ScrollViewer>
         <StackPanel Grid.Row="2" Orientation="Horizontal" >
-            <Button x:Name="buttonReport" HorizontalAlignment="Right" Margin="10,0,10,0" VerticalAlignment="Top" Padding="0,0,0,0" Height="35" Width="140">
-                <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Stretch">
-                    <materialDesign:PackIcon Kind="Backspace" Width="20" Height="20" Margin="0 0 10 0"/>
-                    <TextBlock Text="Отчет" HorizontalAlignment="Right"/>
-                </StackPanel>
-            </Button>
-            <Button x:Name="buttonAdd" HorizontalAlignment="Right" Margin="10,0,10,0" VerticalAlignment="Top" Padding="0,0,0,0" Height="35" Width="150">
-                <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Stretch">
-                    <materialDesign:PackIcon Kind="Backspace" Width="20" Height="20" Margin="0 0 10 0"/>
-                    <TextBlock Text="Получить QR-код" HorizontalAlignment="Right"/>
-                </StackPanel>
-            </Button>
             <Button x:Name="buttonDeleteItem" HorizontalAlignment="Right" Margin="10,0,10,0" VerticalAlignment="Top" Padding="0,0,0,0" Height="35" Width="140" Click="DeleteItemButton_Click">
                 <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Stretch">
                     <materialDesign:PackIcon Kind="Delete" Width="20" Height="20" Margin="0 0 10 0"/>

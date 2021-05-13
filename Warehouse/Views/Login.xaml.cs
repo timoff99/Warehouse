@@ -75,7 +75,11 @@ namespace Warehouse
             {
                 MessageBox.Show($"Информация об ошибке: {ex.Message}", "Произошла ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
             }
+            if (LoginEmailTextBox.Text.ToString() == "" || LoginPasswordBox.Password.ToString() == "")
+            { 
+
             MessageBox.Show($"Введите данные", "Произошла ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
 
         //Восстановление пароля
@@ -90,11 +94,11 @@ namespace Warehouse
                 { 
               await Task.Run(() =>
                 {
-                    MailAddress from = new MailAddress("qq1262245@gmail.com", "PartShop");
+                    MailAddress from = new MailAddress("qq1262245@gmail.com", "Warehouse Support");
                     MailAddress to = new MailAddress(email);
                     MailMessage message = new MailMessage(from, to);
-                    message.Subject = "Test";
-                    message.Body = $"Здравстуйте {currentUser.Name} \nВаш пароль воссановлен { Security.Decrypt(currentUser.Password.ToString())}";
+                    message.Subject = "Секретный пароль";
+                    message.Body = $"Здравстуйте {currentUser.Name} \nВаш пароль воссановлен: { Security.Decrypt(currentUser.Password.ToString())}";
                     SmtpClient smtp = new SmtpClient("smtp.gmail.com", 587);
                     smtp.Credentials = new NetworkCredential("qq1262245@gmail.com", "hfukmbejrhgalhcv");
                     smtp.EnableSsl = true;

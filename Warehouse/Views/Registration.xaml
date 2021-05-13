@@ -23,9 +23,7 @@
 
                     <Button HorizontalAlignment="Right" Content="Войти" Style="{StaticResource MaterialDesignFlatButton}" Click="EnterLoginButton_Click"/>
                 </Grid>
-                
-                    <ProgressBar x:Name="loading" Style="{StaticResource MaterialDesignCircularProgressBar}" Value="0" IsIndeterminate="True" Visibility="Hidden"/>
-                
+                                
                 <StackPanel Orientation="Horizontal">
                     <TextBox x:Name="NameRegisterTextBox"  materialDesign:HintAssist.Hint="Введите ваше имя" Width="444" Style="{StaticResource MaterialDesignFloatingHintTextBox}"  TextChanged="RegisterValidation_TextChangedEvent"/>
                     <materialDesign:PackIcon Kind="TooltipText" VerticalAlignment="Center" Width="20" Height="20">
@@ -38,7 +36,7 @@
                 </StackPanel >
                 
                 <StackPanel Orientation="Horizontal">
-                    <TextBox  x:Name="EmailRegisterTextBox" materialDesign:HintAssist.Hint="Email" Width="444" Style="{StaticResource MaterialDesignFloatingHintTextBox}" TextChanged="RegisterValidation_TextChangedEvent"/>
+                    <TextBox  x:Name="EmailRegisterTextBox"  materialDesign:HintAssist.Hint="Email" Width="444" Style="{StaticResource MaterialDesignFloatingHintTextBox}" TextChanged="RegisterValidation_TextChangedEvent"/>
                     <materialDesign:PackIcon Kind="TooltipText" VerticalAlignment="Center" Width="20" Height="20">
                         <materialDesign:PackIcon.ToolTip>
                             <ToolTip Placement="Mouse">
@@ -49,7 +47,7 @@
                 </StackPanel>
 
                 <StackPanel Orientation="Horizontal">
-                    <TextBox  x:Name="PasRegisterTextBox" materialDesign:HintAssist.Hint="Введите пароль" Width="444" Style="{StaticResource MaterialDesignFloatingHintTextBox}" TextChanged="RegisterValidation_TextChangedEvent"/>
+                    <TextBox  x:Name="PasRegisterTextBox"  materialDesign:HintAssist.Hint="Введите пароль" Width="444" Style="{StaticResource MaterialDesignFloatingHintTextBox}" TextChanged="RegisterValidation_TextChangedEvent"/>
                     <materialDesign:PackIcon Kind="TooltipText" VerticalAlignment="Center" Width="20" Height="20">
                         <materialDesign:PackIcon.ToolTip>
                             <ToolTip Placement="Mouse">

@@ -71,7 +71,7 @@
             
             <Button x:Name="buttonAdd" HorizontalAlignment="Right" Margin="10,0,10,0" VerticalAlignment="Top" Padding="0,0,0,0" Height="35" Width="200" Click="GetQRCode">
                 <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Stretch">
-                    <materialDesign:PackIcon Kind="Backspace" Width="20" Height="20" Margin="0 0 10 0"/>
+                    <materialDesign:PackIcon Kind="QrcodeScan" Width="20" Height="20" Margin="0 0 10 0"/>
                     <TextBlock Text="Получить QR-код" HorizontalAlignment="Right"/>
                 </StackPanel>
             </Button>

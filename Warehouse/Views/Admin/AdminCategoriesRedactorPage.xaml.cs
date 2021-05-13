@@ -102,15 +102,21 @@ namespace Warehouse.Views.Admin
                     {
                         if (CategoriesDataGrid.SelectedCells.Count == 2)
                         {
-                            StaffItems updatedStaffItem = new StaffItems();
-
+                            
                             Categories category = CategoriesDataGrid.SelectedItem as Categories;
-
+                            var oldName = category.Name;
+                            var updatedStaffItem = db.StaffItems.Where(x => x.FK_Category == oldName);
+                           
+                           
                             //поиск обновляемого элемента в контексте по ID (Primary key)
                             category = db.Categories.Where(x => x.Id == category.Id).FirstOrDefault();
                             category.Name = textBoxCategoryName.Text.ToString();
                             category.Description = textBoxCategoryDescription.Text.ToString();
-
+                            foreach (var item in updatedStaffItem)
+                            {
+                                item.FK_Category = textBoxCategoryName.Text;
+                            }
+                            
 
                             db.Entry(category).State = EntityState.Modified;
                             db.SaveChanges();
@@ -140,9 +146,19 @@ namespace Warehouse.Views.Admin
             {
                 Categories selectedItem = CategoriesDataGrid.SelectedItem as Categories;
 
-                var item = db.Categories.Where(x => x.Id == selectedItem.Id).FirstOrDefault();
-                db.Categories.Remove(item);
-                db.Entry(item).State = EntityState.Deleted;
+                var deletedCategory = db.Categories.Where(x => x.Id == selectedItem.Id).FirstOrDefault();
+
+                StaffItems deleteItem = new StaffItems();
+
+                var staffDeleteItem = db.StaffItems.Where(x => x.FK_Category == selectedItem.Name);
+
+                foreach (var item in staffDeleteItem)
+                {
+                    if (item.FK_Category == deletedCategory.Name)
+                        item.FK_Category = null;
+                }
+                db.Categories.Remove(deletedCategory);
+                db.Entry(deletedCategory).State = EntityState.Deleted;
                 db.SaveChanges();
 
                 FillDataGrid();

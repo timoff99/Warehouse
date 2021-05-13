@@ -104,22 +104,21 @@ namespace Warehouse.Views.Admin
                     {
                         if (EmployeesDataGrid.SelectedCells.Count == 3)
                         {
-                            StaffItems updatedStaffItem = new StaffItems();
-                            Employees rowView = EmployeesDataGrid.SelectedItem as Employees;
-
-                            Employees updatedEmployee = new Employees();
+                            Employees employee = EmployeesDataGrid.SelectedItem as Employees;
+                            var oldName = employee.Name;
+                            var updatedStaffItem = db.StaffItems.Where(x => x.FK_ResponsibleEmployee == oldName);
 
                             //поиск обновляемого элемента в контексте по ID (Primary key)
-                            updatedEmployee = db.Employees.Where(x => x.Id == rowView.Id).FirstOrDefault();
-                            updatedStaffItem = db.StaffItems.Where(x => x.Employees.Id == rowView.Id).FirstOrDefault();
-                            //поиск обновляемого элемента в контексте по ID (Primary key)
-                            updatedEmployee.Name = textBoxEmployeeName.Text.ToString();
-                            updatedEmployee.Phone = textBoxEmployeePhone.Text.ToString();
-                            updatedEmployee.Email = textBoxEmployeeEmail.Text.ToString();
+                            employee = db.Employees.Where(x => x.Id == employee.Id).FirstOrDefault();
+                            employee.Name = textBoxEmployeeName.Text.ToString();
+                            employee.Phone = textBoxEmployeePhone.Text.ToString();
 
-                            db.Entry(updatedEmployee).State = EntityState.Modified;
-                            updatedStaffItem.Employees = updatedEmployee;
-                            updatedStaffItem.FK_ResponsibleEmployee = updatedEmployee.Name;
+                            foreach (var item in updatedStaffItem)
+                            {
+                                item.FK_ResponsibleEmployee = textBoxEmployeeName.Text;
+                            }
+                            db.Entry(employee).State = EntityState.Modified;
+                           
                             db.SaveChanges();
 
                             FillDataGrid();
@@ -144,11 +143,21 @@ namespace Warehouse.Views.Admin
         {
             using (db = new DatabaseEntities())
             {
-                Employees selectedItem = EmployeesDataGrid.SelectedItem as Employees;
+                Employees selectedEmployee = EmployeesDataGrid.SelectedItem as Employees;
 
-                var item = db.Employees.Where(x => x.Id == selectedItem.Id).FirstOrDefault();
-                db.Employees.Remove(item);
-                db.Entry(item).State = EntityState.Deleted;
+                var EmployeeItem = db.Employees.Where(x => x.Id == selectedEmployee.Id).FirstOrDefault();
+
+                StaffItems deleteItem = new StaffItems();
+
+                var staffDeleteItem = db.StaffItems.Where(x=> x.FK_ResponsibleEmployee == selectedEmployee.Name);
+
+                foreach (var item in staffDeleteItem)
+                {
+                    if (item.FK_ResponsibleEmployee == EmployeeItem.Name)
+                        item.FK_ResponsibleEmployee = null;
+                }
+                db.Employees.Remove(EmployeeItem);
+                db.Entry(EmployeeItem).State = EntityState.Deleted;
                 db.SaveChanges();
 
                 FillDataGrid();

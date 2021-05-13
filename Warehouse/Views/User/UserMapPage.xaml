@@ -9,8 +9,9 @@
              d:DesignHeight="600" d:DesignWidth="1000">
     <Grid x:Name="MainGrid" Background="PeachPuff">
 
-        
-            <gmaps:GMapControl x:Name="mapView" Loaded="mapView_Loaded" />
+        <TextBlock HorizontalAlignment="Center" Text="Место расположения нашего склада" FontWeight="Bold" FontSize="50"
+                   FontFamily=" Comic Sans MS"/>
+        <gmaps:GMapControl x:Name="mapView" Loaded="mapView_Loaded" Height="500" VerticalAlignment="Bottom"/>
        
     </Grid> 
 </UserControl>
