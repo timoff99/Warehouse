@@ -49,12 +49,11 @@
             
             ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle}" 
             HorizontalGridLinesBrush="#dde8ef" 
-            CellStyle="{DynamicResource DataGridCellStyle}" 
+            CellStyle="{DynamicResource DataGridCellStyle}" SelectionChanged="UsersDataGrid_SelectionChanged" 
            >
             <DataGrid.Columns>
                 <DataGridTextColumn Binding="{Binding Name}" Header="Имя" Width="*"/>
                 <DataGridTextColumn Binding="{Binding Email}" Header="Email" Width="*"/>
-                <DataGridTextColumn Binding="{Binding Password}" Header="Пароль" Width="*"/>
                 <DataGridTextColumn Binding="{Binding IsAdmin}" Header="Админ?" Width="*"/>
             </DataGrid.Columns>
         </DataGrid>
@@ -80,13 +79,10 @@
                 <Label Content="Email" Grid.Row="1" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold" Foreground="#6f7a8b"/>
                 <TextBox x:Name="EmailRegisterTextBox" Grid.Row="1" MaxLength="25" Height="30" Margin="10,20,10,0" Text="{Binding Path=SelectedItem.Email, ElementName=UsersDataGrid, Mode=OneWay}" VerticalAlignment="Center" HorizontalAlignment="Stretch" Style="{StaticResource RightTextBox}" TextChanged="GoodsInfoValidation_TextChangedEvent"  />
 
-                <Label Content="Пароль" Grid.Row="2" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold" Foreground="#6f7a8b"/>
-                <TextBox x:Name="PasRegisterTextBox" Grid.Row="2" MaxLength="25" Height="30" Margin="10,20,10,0" Text="{Binding Path=SelectedItem.Password, ElementName=UsersDataGrid, Mode=OneWay}" VerticalAlignment="Center" HorizontalAlignment="Stretch" Style="{StaticResource RightTextBox}" />
+                <Label Content="Админ?" Grid.Row="2" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold" Foreground="#6f7a8b"/>
+                <ComboBox x:Name="IsAdminComboBox" Grid.Row="2"  Height="30" Margin="10,20,10,0" Text="{Binding Path=SelectedItem.IsAdmin, ElementName=UsersDataGrid, Mode=OneWay}" VerticalAlignment="Center" HorizontalAlignment="Stretch"   />
 
-                <Label Content="Админ?" Grid.Row="3" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold" Foreground="#6f7a8b"/>
-                <ComboBox x:Name="IsAdminComboBox" Grid.Row="3"  Height="30" Margin="10,20,10,0" Text="{Binding Path=SelectedItem.IsAdmin, ElementName=UsersDataGrid, Mode=OneWay}" VerticalAlignment="Center" HorizontalAlignment="Stretch"   />
-
-                <Button x:Name="ButtonUpdateGoodsInfo" Grid.Row="4" Margin="10,10,10,0" FontSize="13" HorizontalAlignment="Center" VerticalAlignment="Top" Width="170" Padding="0" Height="35" Style="{StaticResource MaterialDesignRaisedAccentButton}" Click="ButtonUpdateGoodsInfo_Click">
+                <Button x:Name="ButtonUpdateGoodsInfo" Grid.Row="3" Margin="10,10,10,0" FontSize="13" HorizontalAlignment="Center" VerticalAlignment="Top" Width="170" Padding="0" Height="35" Style="{StaticResource MaterialDesignRaisedAccentButton}" Click="ButtonUpdateGoodsInfo_Click">
                     <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
                         <materialDesign:PackIcon Kind="Refresh" VerticalAlignment="Center"/>
                         <Label Content="ОБНОВИТЬ ДАННЫЕ"/>

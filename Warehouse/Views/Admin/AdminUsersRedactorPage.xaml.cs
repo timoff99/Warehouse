@@ -54,7 +54,6 @@ namespace Warehouse.Views.Admin
             {
                 var filter = db.Users.Where(x => x.Name.Contains(textBoxItemsSearch.Text) ||
                                                 x.Email.ToString().Contains(textBoxItemsSearch.Text) ||
-                                                x.Password.ToString().Contains(textBoxItemsSearch.Text) ||
                                                 x.IsAdmin.ToString().Contains(textBoxItemsSearch.Text)
                                                 );
                 BindingList<Users> user = new BindingList<Users>();
@@ -158,7 +157,6 @@ namespace Warehouse.Views.Admin
                             updatedUser = db.Users.Where(x => x.Id == currentUser.Id).FirstOrDefault();
                             updatedUser.Name = NameRegisterTextBox.Text.ToString();
                             updatedUser.Email = EmailRegisterTextBox.Text.ToString();
-                            updatedUser.Password = Security.Encrypt(PasRegisterTextBox.Text.ToString().Trim());
                             updatedUser.IsAdmin = bool.Parse(IsAdminComboBox.Text);
                             db.Entry(updatedUser).State = EntityState.Modified;
                            
@@ -196,6 +194,11 @@ namespace Warehouse.Views.Admin
             AddUsersWindow addUsersWindow = new AddUsersWindow();
             addUsersWindow.ShowDialog();
             FillDataGrid();
+        }
+
+        private void UsersDataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
         }
     }
 }

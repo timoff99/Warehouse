@@ -94,13 +94,13 @@ namespace Warehouse
                 { 
               await Task.Run(() =>
                 {
-                    MailAddress from = new MailAddress("qq1262245@gmail.com", "Warehouse Support");
+                    MailAddress from = new MailAddress("qq12622455@gmail.com", "Warehouse Support"); // account pass -> hfukmbejrhgalhcv
                     MailAddress to = new MailAddress(email);
                     MailMessage message = new MailMessage(from, to);
                     message.Subject = "Секретный пароль";
                     message.Body = $"Здравстуйте {currentUser.Name} \nВаш пароль воссановлен: { Security.Decrypt(currentUser.Password.ToString())}";
                     SmtpClient smtp = new SmtpClient("smtp.gmail.com", 587);
-                    smtp.Credentials = new NetworkCredential("qq1262245@gmail.com", "hfukmbejrhgalhcv");
+                    smtp.Credentials = new NetworkCredential("qq12622455@gmail.com", "iitx aedm oozi xohl"); // app password
                     smtp.EnableSsl = true;
                     smtp.SendMailAsync(message);
                     MessageBox.Show($"Пароль отправлен на указанный при регистрации email", "Успешно отправлен", MessageBoxButton.OK, MessageBoxImage.Information);
